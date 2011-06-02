@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+	<extension
+		point="org.eclipse.ui.views">
+	   <category
+	         id="com.sigasi.profiling"
+	         name="Profiling">
+	   </category>
+	   <view
+	         category="com.sigasi.profiling"
+	         class="com.sigasi.emfstats.StatsView"
+	         id="com.sigasi.emfstatsview"
+	         name="EMF Stats"
+	         restorable="true" />
+	</extension>
+
+</plugin>

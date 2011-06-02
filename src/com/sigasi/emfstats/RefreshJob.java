@@ -25,7 +25,6 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 
 import com.google.common.collect.Maps;
-import com.sigasi.hdt.vhdl.ui.internal.VhdlUiActivator;
 
 public class RefreshJob extends Job {
 
@@ -92,7 +91,7 @@ public class RefreshJob extends Job {
 
 			return Status.OK_STATUS;
 		} catch (Throwable t) {
-			return new Status(IStatus.ERROR, VhdlUiActivator.ID,
+			return new Status(IStatus.ERROR, "com.sigasi.emfstats",
 					"Error refreshing EMF stats", t);
 		}
 	}
