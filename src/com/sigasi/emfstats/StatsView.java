@@ -26,7 +26,7 @@ public class StatsView extends PageBookView {
 	protected IPage createDefaultPage(PageBook book) {
 		defaultPage = new MessagePage();
 		initPage(defaultPage);
-		defaultPage.setMessage("No VHDL editor active");
+		defaultPage.setMessage("No Xtext editor active.");
 		defaultPage.createControl(getPageBook()); 
 		return defaultPage;
 	}
