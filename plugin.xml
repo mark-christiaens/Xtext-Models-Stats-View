@@ -10,9 +10,9 @@
 	   </category>
 	   <view
 	         category="com.sigasi.profiling"
-	         class="com.sigasi.emfstats.StatsView"
-	         id="com.sigasi.emfstatsview"
-	         name="EMF Stats"
+	         class="com.sigasi.nodestats.StatsView"
+	         id="com.sigasi.nodestatsview"
+	         name="Node Model Stats"
 	         restorable="true" />
 	</extension>
 

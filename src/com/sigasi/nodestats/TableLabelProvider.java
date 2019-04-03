@@ -9,7 +9,7 @@
  *     Sigasi N.V.: Mark Christiaens - initial API and implementation
  *******************************************************************************/
 
-package com.sigasi.emfstats;
+package com.sigasi.nodestats;
 
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
@@ -22,8 +22,8 @@ public class TableLabelProvider extends LabelProvider implements
 	}
 
 	public String getColumnText(Object element, int columnIndex) {
-		if (element instanceof EClassStats) {
-			EClassStats stats = (EClassStats) element;
+		if (element instanceof INodeStats) {
+			INodeStats stats = (INodeStats) element;
 
 			switch (columnIndex) {
 			case 0:
@@ -31,14 +31,12 @@ public class TableLabelProvider extends LabelProvider implements
 			case 1:
 				return Long.toString(stats.getInstanceCount());
 			case 2:
-				return Long.toString(stats.getFeatureCount());
-			case 3:
-				return Long.toString(stats.getFeatureLoad());
+				return stats.details();
 			}
 
-			return "There are only 4 columns (index 0 to 3)";
+			return "There are only 3 columns (index 0 to 2)";
 		}
 
-		return "Row should have Stats type";
+		return "Row should have " + INodeStats.class.getName() + " type";
 	}
 }

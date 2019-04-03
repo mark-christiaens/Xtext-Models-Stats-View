@@ -9,7 +9,7 @@
  *     Sigasi N.V.: Mark Christiaens - initial API and implementation
  *******************************************************************************/
 
-package com.sigasi.emfstats;
+package com.sigasi.nodestats;
 
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;

@@ -9,7 +9,7 @@
  *     Sigasi N.V.: Mark Christiaens - initial API and implementation
  *******************************************************************************/
 
-package com.sigasi.emfstats;
+package com.sigasi.nodestats;
 
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerComparator;
@@ -38,8 +38,8 @@ public class StatsComparator extends ViewerComparator {
 	@Override
 	public int compare(Viewer viewer, Object e1, Object e2) {
 		int rc = 0;
-		EClassStats s1 = (EClassStats) e1;
-		EClassStats s2 = (EClassStats) e2;
+		INodeStats s1 = (INodeStats) e1;
+		INodeStats s2 = (INodeStats) e2;
 		
 		switch (columnToSort) {
 		case 0:
@@ -56,21 +56,7 @@ public class StatsComparator extends ViewerComparator {
 			rc = Long.valueOf(l1).compareTo(Long.valueOf(l2));   
 			break;
 		}
-		
-		case 2:{
-			long l1 = s1.getFeatureCount(); 
-			long l2 = s2.getFeatureCount(); 
-			rc = Long.valueOf(l1).compareTo(Long.valueOf(l2)); 
-			break;
-		}
-		
-		case 3:{
-			long l1 = s1.getFeatureLoad(); 
-			long l2 = s2.getFeatureLoad(); 
-			rc = Long.valueOf(l1).compareTo(Long.valueOf(l2)); 
-			break;
-		}
-		
+				
 		default:
 			rc = 0;
 		}
