@@ -27,7 +27,14 @@ import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.impl.CompositeNode;
 import org.eclipse.xtext.nodemodel.impl.CompositeNodeWithSemanticElement;
+import org.eclipse.xtext.nodemodel.impl.CompositeNodeWithSemanticElementAndSyntaxError;
+import org.eclipse.xtext.nodemodel.impl.CompositeNodeWithSyntaxError;
+import org.eclipse.xtext.nodemodel.impl.HiddenLeafNode;
+import org.eclipse.xtext.nodemodel.impl.HiddenLeafNodeWithSyntaxError;
+import org.eclipse.xtext.nodemodel.impl.LeafNode;
+import org.eclipse.xtext.nodemodel.impl.LeafNodeWithSyntaxError;
 import org.eclipse.xtext.nodemodel.impl.RootNode;
+import org.eclipse.xtext.nodemodel.impl.SyntheticCompositeNode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
@@ -56,9 +63,17 @@ public class RefreshJob extends Job {
 						.<Class, Function<? super Class, ? extends INodeStats>>builder()
 						.put(RootNode.class, c -> new INodeStats.RootNodeStats())
 						.put(CompositeNode.class, c -> new INodeStats.CompositeNodeStats())
-						.put(CompositeNodeWithSemanticElement.class, c -> new INodeStats.CompositeNodeWithSemanticElementStats())
-						.build();
-				
+						.put(CompositeNodeWithSemanticElement.class,
+								c -> new INodeStats.CompositeNodeWithSemanticElementStats())
+						.put(CompositeNodeWithSemanticElementAndSyntaxError.class,
+								c -> new INodeStats.CompositeNodeWithSemanticElementAndSyntaxErrorStats())
+						.put(CompositeNodeWithSyntaxError.class,
+								c -> new INodeStats.CompositeNodeWithSyntaxErrorStats())
+						.put(SyntheticCompositeNode.class, c -> new INodeStats.SyntheticCompositeNodeStats())
+						.put(LeafNode.class, c -> new INodeStats.LeafNodeStats())
+						.put(LeafNodeWithSyntaxError.class, c -> new INodeStats.LeafNodeWithSyntaxErrorStats())
+						.put(HiddenLeafNode.class, c -> new INodeStats.HiddenLeafNodeStats())
+						.put(HiddenLeafNodeWithSyntaxError.class, c -> new INodeStats.HiddenLeafNodeWithSyntaxErrorStats()).build();
 
 				for (INode iNode : iterable) {
 					Function<? super Class, ? extends INodeStats> constructor = nodeClassToStatsProvider
