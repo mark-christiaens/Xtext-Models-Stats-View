@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Node-Model-Statistics-View (Mark Christiaens)
+Bundle-SymbolicName: com.sigasi.nodestats;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: com.sigasi
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.eclipse.emf.ecore,
+ org.eclipse.xtext,
+ org.eclipse.core.runtime,
+ org.eclipse.jface,
+ org.eclipse.xtext.ui,
+ org.apache.log4j
+Automatic-Module-Name: com.sigasi.nodestats
+Export-Package: com.sigasi.nodestats
