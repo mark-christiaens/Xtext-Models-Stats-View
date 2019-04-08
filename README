@@ -1,0 +1,3 @@
+Eclipse support for viewing the statistics of some of the models used in an
+Xtext editor.  With these plugins you can visualize some statistics about the
+EMF model of the resource backing an editor and the underlying node model.

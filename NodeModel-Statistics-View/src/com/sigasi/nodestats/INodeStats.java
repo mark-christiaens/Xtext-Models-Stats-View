@@ -20,7 +20,7 @@ public abstract class INodeStats<T extends INode> {
 	public INodeStats(Class<T> c) {
 		this.c = c;
 	}
-
+	
 	public String getName() {
 		return c.getSimpleName();
 	}
@@ -43,13 +43,28 @@ public abstract class INodeStats<T extends INode> {
 		}
 	}
 
-	public static class CompositeNodeStats extends INodeStats<CompositeNode> {
-		public CompositeNodeStats() {
-			super(CompositeNode.class);
+	public static class CompositeNodeStats<T extends CompositeNode> extends INodeStats<T> {
+		private long totalLookAhead;
+
+		public CompositeNodeStats(Class<T> c) {
+			super (c);
+		}
+		
+		@Override
+		protected void process(INode iNode) {
+			super.process(iNode);
+			CompositeNode compositeNode = (CompositeNode) iNode;
+			totalLookAhead += compositeNode.getLookAhead();
+		}
+		
+		@Override
+		protected String details() {
+			double averageLookahead = 1.0 * totalLookAhead / getInstanceCount();
+			return "Average lookahead: " + averageLookahead;
 		}
 	}
 
-	public static class CompositeNodeWithSemanticElementStats extends INodeStats<CompositeNodeWithSemanticElement> {
+	public static class CompositeNodeWithSemanticElementStats extends CompositeNodeStats<CompositeNodeWithSemanticElement> {
 		public CompositeNodeWithSemanticElementStats() {
 			super(CompositeNodeWithSemanticElement.class);
 		}

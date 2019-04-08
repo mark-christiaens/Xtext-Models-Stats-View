@@ -62,7 +62,8 @@ public class RefreshJob extends Job {
 				ImmutableMap<Class, Function<? super Class, ? extends INodeStats>> nodeClassToStatsProvider = ImmutableMap
 						.<Class, Function<? super Class, ? extends INodeStats>>builder()
 						.put(RootNode.class, c -> new INodeStats.RootNodeStats())
-						.put(CompositeNode.class, c -> new INodeStats.CompositeNodeStats())
+						.put(CompositeNode.class,
+								c -> new INodeStats.CompositeNodeStats<CompositeNode>(CompositeNode.class))
 						.put(CompositeNodeWithSemanticElement.class,
 								c -> new INodeStats.CompositeNodeWithSemanticElementStats())
 						.put(CompositeNodeWithSemanticElementAndSyntaxError.class,
@@ -73,7 +74,9 @@ public class RefreshJob extends Job {
 						.put(LeafNode.class, c -> new INodeStats.LeafNodeStats())
 						.put(LeafNodeWithSyntaxError.class, c -> new INodeStats.LeafNodeWithSyntaxErrorStats())
 						.put(HiddenLeafNode.class, c -> new INodeStats.HiddenLeafNodeStats())
-						.put(HiddenLeafNodeWithSyntaxError.class, c -> new INodeStats.HiddenLeafNodeWithSyntaxErrorStats()).build();
+						.put(HiddenLeafNodeWithSyntaxError.class,
+								c -> new INodeStats.HiddenLeafNodeWithSyntaxErrorStats())
+						.build();
 
 				for (INode iNode : iterable) {
 					Function<? super Class, ? extends INodeStats> constructor = nodeClassToStatsProvider

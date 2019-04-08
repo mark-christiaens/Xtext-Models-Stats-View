@@ -100,6 +100,12 @@ public class StatsPage extends Page {
 				tblclmnInstanceCount.setWidth(200);
 				tblclmnInstanceCount.setText("Stats");
 			}
+			{
+				final TableColumn tblclmnAvgLookAhead= new TableColumn(table, SWT.LEFT);
+				tblclmnAvgLookAhead.setWidth(200);
+				tblclmnAvgLookAhead.setText("Stats");
+			}
+			
 			tableViewer.setLabelProvider(new TableLabelProvider());
 			tableViewer.setContentProvider(new ArrayContentProvider());
 			tableViewer.setComparator(new StatsComparator()); 
