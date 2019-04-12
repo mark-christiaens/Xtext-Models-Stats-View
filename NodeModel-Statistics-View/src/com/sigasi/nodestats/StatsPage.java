@@ -98,7 +98,12 @@ public class StatsPage extends Page {
 			{
 				final TableColumn tblclmnInstanceCount = new TableColumn(table, SWT.LEFT);
 				tblclmnInstanceCount.setWidth(200);
-				tblclmnInstanceCount.setText("Stats");
+				tblclmnInstanceCount.setText("Instance count");
+			}
+			{
+				final TableColumn tblclmnDetails = new TableColumn(table, SWT.LEFT);
+				tblclmnDetails.setWidth(200);
+				tblclmnDetails.setText("Details");
 			}
 			tableViewer.setLabelProvider(new TableLabelProvider());
 			tableViewer.setContentProvider(new ArrayContentProvider());
